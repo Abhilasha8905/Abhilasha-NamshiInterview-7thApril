@@ -1,0 +1,27 @@
+import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
+import  {connect} from  'react-redux'
+export class Header extends Component {
+    render() {
+        return (
+            <div className="row">
+              <div className="col-md-12">
+                  <header style={{ backgroundColor: 'red' }}>
+                  <nav className="navbar  navbar-dark">
+                        <ul className="nav">
+                            <li className="nav-item" ><Link to="/" className="nav-link active" >Products</Link></li>
+                            <li className="nav-item"><Link to="/carts" className="nav-link">Cart Items : {this.props.numberCart}</Link></li>
+                        </ul>
+                  </nav>
+                  </header>
+              </div>
+            </div>
+        )
+    }
+}
+const mapStateToProps = state =>{
+    return{
+        numberCart:state._todoProduct.numberCart
+    }
+}
+export default connect(mapStateToProps,null)(Header)
